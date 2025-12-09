@@ -1,5 +1,4 @@
-import { FaUser, FaPhone } from "react-icons/fa6";
-
+import { FaUser, FaPhone, FaTrashCan } from "react-icons/fa6";
 import styles from "./Contact.module.css";
 
 export default function Contact({ id, name, number, onDelete }) {
@@ -15,8 +14,11 @@ export default function Contact({ id, name, number, onDelete }) {
                     {number}
                 </p>
             </div>
-            <button className={styles.button} onClick={() => onDelete(id)}>
-                Delete
+            <button
+                className={styles.button}
+                onClick={() => onDelete(id)}
+                title="Delete contact">
+                <FaTrashCan />
             </button>
         </div>
     );
