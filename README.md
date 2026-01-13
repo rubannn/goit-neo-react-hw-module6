@@ -1,5 +1,12 @@
 # React + Vite
 
+New packages
+```
+npm install @reduxjs/toolkit react-redux
+npm install redux-persist
+```
+
+---
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

@@ -1,10 +1,12 @@
 import { useId } from "react";
-
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import { object, string } from "yup";
 
 import styles from "./ContactForm.module.css";
+
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const contactSchema = object({
     name: string()
@@ -19,15 +21,19 @@ const contactSchema = object({
         .required("Required"),
 });
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
     const nameId = useId();
     const numberId = useId();
+    const dispath = useDispatch();
+
     const onSubmitHandler = (values, actions) => {
-        onSubmit({
-            id: nanoid(),
-            name: values.name,
-            number: values.number,
-        });
+        dispath(
+            addContact({
+                id: nanoid(),
+                name: values.name,
+                number: values.number
+            })
+        );
 
         actions.resetForm();
     };
